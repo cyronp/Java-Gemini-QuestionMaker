@@ -22,7 +22,7 @@ html {
 .title {
   font-size: 3rem;
   text-align: center;
-  background: linear-gradient(280deg,#000000,#8f8f8f,#8f8f8f,#000000);
+  background: linear-gradient(280deg, #000000, #8f8f8f, #8f8f8f, #000000);
   background-size: 200% 110%;
   animation: gradient-animation 12s ease infinite;
   -webkit-background-clip: text;
@@ -180,6 +180,74 @@ html {
   transform: scale(1.05);
 }
 
+.hidden {
+  display: none;
+}
+
+.prompt-context {
+  width: 40rem;
+  height: 25rem;
+}
+
+.prompt-context ol {
+  list-style-type: upper-alpha;
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+.prompt-context li {
+  display: list-item;
+  list-style-position: inside;
+  padding-left: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin: 0.7rem;
+  background-color: #0F0F0F;
+  border: 1px solid #383838;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: 1s;
+}
+
+.prompt-context li::marker {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.prompt-context li:hover{
+  background-color: #2a2a2a;
+  transform: scale(1.1);
+}
+
+.question {
+  margin-left: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.prompt-context {
+  color: white;
+}
+
+.show-btn{
+  background-color: white;
+  border: none;
+  padding: 1rem;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  border-radius: 5px;
+  margin: 0.8rem;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.show-btn:hover{
+  transform: scale(1.1);
+}
+
 @keyframes fadeInDown {
   0% {
     opacity: 1;
@@ -208,9 +276,11 @@ html {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

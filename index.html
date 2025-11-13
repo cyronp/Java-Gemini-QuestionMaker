@@ -41,7 +41,7 @@
     </aside>
     <div class="main-container">
       <h1 class="title">QuestionMaker</h1>
-      <div class="input-wrapper">
+      <div class="input-wrapper hidden">
         <textarea
           name="prompt"
           id="prompt"
@@ -64,6 +64,16 @@
             <polyline points="5 12 12 5 19 12"></polyline>
           </svg>
         </button>
+      </div>
+      <div class="prompt-context">
+        <h2 class="question">Qual camada do modelo TCP/IP é responsável por converter nomes de domínio (como www.google.com) em endereços IP, tipicamente usando o protocolo DNS?</h2>
+        <ol type="A">
+          <li>Camada de Aplicação</li>
+          <li>Camada de Rede (ou Internet)</li>
+          <li>Camada de Transporte</li>
+          <li>Camada de Acesso à Rede</li>
+        </ol>
+        <button class="show-btn">Mostrar Resposta</button>
       </div>
     </div>
     <script src="index.js"></script>
