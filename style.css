@@ -225,6 +225,7 @@ html {
 
 .question {
   margin-left: 0.8rem;
+  margin-bottom: 1.1rem;
   font-size: 1.2rem;
 }
 
@@ -246,6 +247,33 @@ html {
 
 .show-btn:hover{
   transform: scale(1.1);
+}
+
+.wrong-answer{
+  border: 1px solid red !important;
+}
+
+.right-answer{
+  border: 1px solid greenyellow !important;
+}
+
+.answer-description{
+  margin: 10px;
+}
+
+.right-title{
+  color: greenyellow;
+  font-size: 1rem;
+}
+
+.wrong-title{
+  color: #af6969;
+  font-size: 1rem;
+}
+
+.answer-text{
+  font-size: 0.9rem;
+  margin: 5px;
 }
 
 @keyframes fadeInDown {
