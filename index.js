@@ -15,3 +15,9 @@
   );
   window.addEventListener("resize", () => autoResize(ta));
 })();
+
+
+function closeSideBar(){
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle('side-hide');
+}

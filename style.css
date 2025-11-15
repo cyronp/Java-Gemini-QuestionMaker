@@ -104,6 +104,35 @@ html {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  transition: 0.5s ease;
+}
+
+.side-hide{
+  width: 6rem;
+  transition: 0.5s ease;
+}
+
+.side-menu:not(.nav-bar-btn) > *{
+  animation: hide-nav 0.5s;
+}
+
+.side-menu.side-hide h1,
+.side-menu.side-hide .new-chat,
+.side-menu.side-hide h2,
+.side-menu.side-hide .history-list,
+.side-menu.side-hide .history-item {
+  display: none;
+}
+
+.nav-bar-btn{
+  color: white;
+  position: absolute;
+  right: 1rem;
+  top: 0.3rem;
+  cursor: pointer;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
 }
 
 .side-menu h1 {
@@ -296,8 +325,19 @@ html {
     opacity: 1;
     transform: translateY(0px);
   }
+}
 
 
+@keyframes hide-nav{
+  0%{
+    opacity: 0%;
+  }
+  50%{
+    opacity: 50%;
+  }
+  100%{
+    opacity: 100%;
+  }
 }
 
 @keyframes gradient-animation {
