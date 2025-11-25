@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <title>QuestionMaker</title>
+  </head>
+  <body>
+    <aside class="side-menu" id="sidebar">
+      <button class="nav-bar-btn" onclick="closeSideBar()">≡</button>
+      
+      <h1>Histórico</h1>
+      
+      <a th:href="@{/}" class="new-chat">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        Novo Chat
+      </a>
+
+      <h2>Questões Salvas</h2>
+      
+      <div class="history-list" role="list" aria-label="Histórico de questões">
+        
+        <a th:each="item : ${historico}" 
+           th:href="@{/historico/{id}(id=${item.id})}"
+           class="history-item" 
+           th:text="${item.titulo}">
+           Título da Questão
+        </a>
+
+        <p th:if="${#lists.isEmpty(historico)}" style="color: gray; font-size: 0.8rem; padding: 10px;">
+            Nenhuma questão gerada ainda.
+        </p>
+
+      </div>
+    </aside>
+
+    <div class="main-container" th:classappend="${questao != null} ? 'has-question' : ''">
+      <h1 class="title" th:classappend="${questao != null} ? 'hidden' : ''">QuestionMaker</h1>
+
+      <form class="input-wrapper" th:action="@{/gerar}" method="post" th:classappend="${questao != null} ? 'hidden' : ''">
+        <textarea
+          name="prompt"
+          id="prompt"
+          class="prompt-input"
+          placeholder="Digite seu tema (ex: Java Spring Boot)..."
+          th:text="${temaAnterior}" 
+          required
+        ></textarea>
+        <button class="send-btn" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V6"></path>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+        </button>
+      </form>
+
+      <div class="prompt-context" th:if="${questao != null}">
+        
+        <h3 th:text="${questao.titulo}" style="color: #8f8f8f; margin-bottom: 0.5rem;"></h3>
+        <h2 class="question" th:text="${questao.pergunta}"></h2>
+
+        <ol type="A">
+          <li th:each="resp : ${questao.respostas}" 
+              th:attr="data-correct=${resp.certoOuErrado}"
+              onclick="toggleAnswer(this)">
+
+            <span th:text="${resp.resposta}">Texto da Opção</span>
+            
+            <div class="answer-description" style="display: none;">
+              <h2 th:class="${resp.certoOuErrado} ? 'right-title' : 'wrong-title'"
+                  th:text="${resp.certoOuErrado} ? 'Resposta Correta' : 'Incorreta'">
+              </h2>
+              <p class="answer-text" th:text="${resp.descricao}"></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="prompt-context" th:if="${questao == null and temaAnterior != null}">
+        <h2 class="wrong-title">Erro ao gerar questão. Tente novamente.</h2>
+      </div>
+
+    </div>
+    <script th:src="@{/index.js}"></script>
+  </body>
+</html>
