@@ -37,6 +37,4 @@ build/
 .env.local
 .env.*.local
 
-### Application Properties (contém API keys) ###
-src/main/resources/application.properties
 
